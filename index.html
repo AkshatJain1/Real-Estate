@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Real Estate</title>
+    <h1>Tenants</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <br>
+  </head>
+  <body>
+    <div ng-app = "myApp" ng-controller = "myCtrl">
+
+        <div class="nav">
+          <button type="button" name="button" ng-click = "minusOne()">Previous</button>
+          <button type="button" name="button" ng-click = "plusOne()">Next</button>
+          <button type="button" name="button" ng-click = "addNew()">New</button>
+          <button type="button" name="button" ng-click = "delete()">Delete</button>
+        </div>
+
+        <table class = "info">
+          <p><tr><td>First Name:</td><td><input type="text" name="firstName" placeholder="Enter Data Here" ng-model="tenants[position].firstName"></td></tr></p>
+          <p><tr><td>Last Name:</td><td><input type="text" name="lastName" placeholder="Enter Data Here"  ng-model= "tenants[position].lastName"></td></tr></p>
+          <p><tr><td>Company: </td><td><input type="text" name="company" placeholder="Enter Data Here"  ng-model= "tenants[position].company"></td></tr></p>
+          <p><tr><td>Job Title: </td><td><input type="text" name="jobTitle" placeholder="Enter Data Here" ng-model= "tenants[position].jobTitle"></td></tr></p>
+          <p><tr><td>Business Phone: </td><td><input type="text" name="businessPhone" placeholder="Enter Data Here" ng-model= "tenants[position].businessPhone"></td></tr></p>
+          <p><tr><td>Home Phone: </td><td><input type="text" name="homePhone" placeholder="Enter Data Here" ng-model= "tenants[position].homePhone"></td></tr></p>
+          <p><tr><td>Mobile Phone: </td><td><input type="text" name="mobilePhone" placeholder="Enter Data Here" ng-model= "tenants[position].mobilePhone"></td></tr></p>
+          <p><tr><td>Street: </td><td><input type="text" name="street" placeholder="Enter Data Here" ng-model= "tenants[position].street"></td></tr></p>
+          <p><tr><td>City: </td><td><input type="text" name="city" placeholder="Enter Data Here" ng-model= "tenants[position].city"></td></tr></p>
+          <p><tr><td>State: </td><td><input type="text" name="state" placeholder="Enter Data Here" ng-model= "tenants[position].state"></td></tr></p>
+          <p><tr><td>Country: </td><td><input type="text" name="country" placeholder="Enter Data Here" ng-model= "tenants[position].country"></td></tr></p>
+          <p><tr><td>Email: </td><td><input type="text" name="email" placeholder="Enter Data Here" ng-model= "tenants[position].email"></td></tr></p>
+          <p><tr><td>Webpage: </td><td><input type="text" name="webpage" placeholder="Enter Data Here" ng-model= "tenants[position].webpage"></td></tr></p>
+          <p><tr><td>Notes: </td><td><input type="text" name="notes" placeholder="Enter Data Here" ng-model= "tenants[position].notes"></td></tr></p>
+        </table>
+
+
+
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var app = angular.module("myApp", []);
+  app.controller('myCtrl', function($scope){
+      $scope.tenants = [
+        {
+            firstName: 'James',
+            lastName: 'Wang',
+            rent: 400,
+            company: "None",
+            jobTitle: "None",
+            businessPhone: "None",
+            homePhone: "None",
+            mobilePhone: "None",
+            street: "None",
+            city: "None",
+            state: "None",
+            country: "None",
+            email: "None",
+            webpage: "None",
+            notes: "None"
+        },
+        {
+          firstName: 'Andrew',
+          lastName: 'Li',
+          rent: 1200,
+          company: "NAN",
+          jobTitle: "NAN",
+          businessPhone: "NAN",
+          homePhone: "NAN",
+          mobilePhone: "NAN",
+          street: "NAN",
+          city: "NAN",
+          state: "NAN",
+          country: "NAN",
+          email: "NAN",
+          webpage: "NAN",
+          notes: "NAN"
+        }
+      ];
+      $scope.position = 0;
+      $scope.plusOne = function(){
+        if($scope.position<($scope.tenants.length-1)){
+          $scope.position+=1;
+        }
+      }
+      $scope.minusOne = function(){
+        if($scope.position>0){
+          $scope.position-=1;
+        }
+      }
+      $scope.addNew = function(){
+        $scope.tenants.push({
+
+        })
+        $scope.position = $scope.tenants.length-1;
+      }
+      $scope.delete = function(){
+        $scope.tenants.splice($scope.position,1);
+        $scope.position=0;
+      }
+  });
+</script>
